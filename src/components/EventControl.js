@@ -71,18 +71,25 @@ class EventControl extends React.Component {
     // console.log(this.state.mainEventList.sighting)
     // we check if our eventlist that contains all the events has more than one event
     if (this.state.mainEventList.length>1){
-our method within event detail will pull the id of the selected event. below 
+// our method within event detail will pull the id of the selected event. 
+// below we set a variable equal to the current state of our list and filter 
+// for only events matching the id within our detail page and return the first element within the array
       const selectedEvent = this.state.mainEventList.filter(event => event.id === id) [0]
-
+//The variable is equal to the event now so we can call on its property of sighting and increment
       selectedEvent.sighting ++;
+//set another variable equal to the current state and filter to return all events except the one of 
+// our current event and add the newly updated event to replace it
       const newMainEventList = this.state.mainEventList.filter(event => event.id !== id).concat(selectedEvent)
+//we update our slice state of main event list to be equal to line 82
       this.setState({
         mainEventList: newMainEventList
       });
     } else {
       const selectedEvent = this.state.mainEventList.filter(event => event.id === id)[0]
       selectedEvent.sighting ++;
+// this array will contain our updated event
       const newEventListArray = []
+//set a variable equal to the new array with the new updated event inside of it 
       const changedEventArray = newEventListArray.concat(selectedEvent)
       this.setState({
         mainEventList: changedEventArray
