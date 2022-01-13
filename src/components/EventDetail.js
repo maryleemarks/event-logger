@@ -2,11 +2,11 @@ import React from "react";
 import PropTypes from "prop-types";
 
 function EventDetail(props){
-  const { event } = props;
-   function handleIncreaseButton() {
-     const newSighting = event.sighting +1;
-     props.onClickingIncrease({name: event.name, location: event.location, demeanor: event.demeanor, sighting: newSighting, id: event.id})
-  }
+  const { event, onClickingIncrease, onClickingDecrement, onClickingDelete} = props;
+  //  function handleIncreaseButton() {
+  //    const newSighting = event.sighting +1;
+  //    props.onClickingIncrease({name: event.name, location: event.location, demeanor: event.demeanor, sighting: newSighting, id: event.id})
+  //}
 
   return (
     <React.Fragment>
