@@ -97,6 +97,38 @@ class EventControl extends React.Component {
     }
   }
 
+  handleDecrementEvent = (id) => {
+    if (this.state.mainEventList.length >1){
+      const selectedEvent = this.state.mainEventList.filter(event => event.id === id) [0]
+      if (selectedEvent.sighting > 1){
+        selectedEvent.sighting --;
+        const newMainEventList = this.state.mainEventList.filter(event => event.id !== id).concat(selectedEvent)
+        this.setState({
+            mainEventList: newMainEventList
+        });
+      } else {
+        return "You can't unsee a cat, no matter the truama"
+      }
+      
+    } else {
+      const selectedEvent = this.state.mainEventList.filter(event => event.id === id)[0]
+      if (selectedEvent.sighting > 1){
+        selectedEvent.sighting --;
+        const newEventListArray = [] 
+        const changedEventArray = newEventListArray.concat(selectedEvent)
+        this.setState({
+          mainEventList: changedEventArray
+        });
+      } else {
+        const error= "You can't unsee a cat, no matter the truama";
+        return error;
+      }
+      
+
+      
+    }
+    
+  }
     //this.setState({ sighting: this.state.sighting + 1})
   // function handleIncreaseButton() {
   //   const newSighting = event.sighting +1;
@@ -113,7 +145,7 @@ class EventControl extends React.Component {
       currentlyVisibleState = <EditEventForm event = {this.state.selectedEvent} onEditEvent = {this.handleEditingEventInList} />
       buttonText = "Return to Cat List";
     } else if (this.state.selectedEvent != null) {
-      currentlyVisibleState = <EventDetail event = {this.state.selectedEvent} onClickingDelete = {this.handleDeletingEvent} onClickingEdit = {this.handleEditClick} onClickingIncrease = {this.handleIncreaseEvent}/>
+      currentlyVisibleState = <EventDetail event = {this.state.selectedEvent} onClickingDelete = {this.handleDeletingEvent} onClickingEdit = {this.handleEditClick} onClickingIncrease = {this.handleIncreaseEvent} onClickingDecrement = { this.handleDecrementEvent}/>
       buttonText = "Return to Cat List";
     } else if (this.state.formVisibleOnPage){
       currentlyVisibleState = <NewEventForm onNewEventCreation={this.handleAddingNewEventToList}  />;

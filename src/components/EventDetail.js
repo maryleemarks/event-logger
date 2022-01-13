@@ -17,6 +17,7 @@ function EventDetail(props){
       <button onClick={ props.onClickingEdit }>Update Cat</button>
       <button onClick={()=> props.onClickingDelete(event.id) }>Cat Died</button>
       <button onClick={()=> props.onClickingIncrease(event.id) }>I saw This Cat Again!</button>
+      <button onClick={()=> props.onClickingDecrement(event.id) }>Whoops wrong cat!</button>
       <hr/>
     </React.Fragment>
   );
@@ -26,7 +27,8 @@ EventDetail.propTypes = {
   event: PropTypes.object,
   onClickingDelete: PropTypes.func,
   onClickingEdit: PropTypes.func,
-  onClickingIncrease: PropTypes.func
+  onClickingIncrease: PropTypes.func,
+  onClickingDecrement: PropTypes.func
 };
 
 export default EventDetail;
